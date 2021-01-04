@@ -1,4 +1,4 @@
-def create_board(width, height):
+def create_board(n, m):
     '''
     Creates a new game board based on input parameters.
 
@@ -10,16 +10,18 @@ def create_board(width, height):
     list: Game board
     '''
     #width = int(input("Please enter the width: "))
-    #height = int(input("Please enther the height: "))
+    #height = int(input("Please enther the height: ")
 
-    for i in range(width):
-        for j in range(height):
-            if(i == 0 or i == width-1 or j ==0 or j == height-1):
-                print('*', end=' ')
-            else:
-                print('-', end=' ')
-    print()
-
+    for i in range(1, n+1) : 
+        for j in range(1, m+1) : 
+            if (i == 1 or i == n or
+                j == 1 or j == m) : 
+                print("*", end="")             
+            else : 
+                print("-", end="")             
+          
+        print() 
+  
 
 def put_player_on_board(board, player):
     '''

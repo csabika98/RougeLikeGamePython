@@ -6,8 +6,7 @@ PLAYER_ICON = '@'
 PLAYER_START_X = 3
 PLAYER_START_Y = 3
 
-BOARD_WIDTH = 30
-BOARD_HEIGHT = 20
+
 
 
 def create_player():
@@ -18,12 +17,19 @@ def create_player():
     Returns:
     dictionary
     '''
-    pass
+    choose_difficulty = input("There are 3 difficulties , choose wisely ,type a number 1.easy, 2.medium, 3.hard: ")
+    if choose_difficulty == '1':
+        easy_diff = engine.create_board(20,50)
+    elif choose_difficulty == '2':    
+        medium_diff = engine.create_board(20,60)
+    else:
+        hard_diff = engine.create_board(40,40)
+
 
 
 def main():
     player = create_player()
-    board = engine.create_board(BOARD_WIDTH, BOARD_HEIGHT)
+    board = engine.create_board()
 
     util.clear_screen()
     is_running = True
