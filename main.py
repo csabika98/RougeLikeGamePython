@@ -17,7 +17,7 @@ def create_player():
     Returns:
     dictionary
     '''
-    choose_difficulty = input("There are 3 difficulties , choose wisely ,type a number 1.easy, 2.medium, 3.hard: ")
+    choose_difficulty = input("There are 3 difficulties , choose wisely ,type a number 1.easy(20x50), 2.medium(20x60), 3.hard(40x40): ")
     if choose_difficulty == '1':
         easy_diff = engine.create_board(20,50)
     elif choose_difficulty == '2':    
