@@ -4,7 +4,7 @@ import ui
 
 PLAYER_ICON = '@'
 PLAYER_START_X = 3
-PLAYER_START_Y = 3
+PLAYER_START_Y = 2
 
 
 
@@ -17,6 +17,7 @@ def create_player():
     Returns:
     dictionary
     '''
+
     player_datas ={PLAYER_ICON:'@'}  
     choose_difficulty = input("There are 3 difficulties , choose wisely ,type a number 1.easy(20x50), 2.medium(20x60), 3.hard(40x40): ")
     if choose_difficulty == '1':
