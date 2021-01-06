@@ -122,6 +122,13 @@ updater()
 
 while True:
 	pressedkey = getch()
+	if pressedkey == "i" or pressedkey =="I":
+		print("You have these items at the moment!")
+		inventory ={"Torch":1,
+					"Letter from mom":1,
+					"Rusty sword":1}
+		for k, v in dict.items(inventory):
+    			print(k,v) 
 	if pressedkey == 'w' or pressedkey == 'W':
 		if room[pos[0]-1][pos[1]] is not stuff['wall']:
 			up(room, stuff['empty'], stuff['player'])
