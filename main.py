@@ -3,8 +3,9 @@ import os
 import time
 import random
 import platform
-from start import inventory
-from start import attribute_player
+from ui import inventory
+from ui import attribute_player
+from ui import balance
 
 try:
     from msvcrt import getch #For windows
@@ -34,7 +35,7 @@ room = {1:['#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','
 	    7:['#','@','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # |
 	    8:['#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','.','.','.','.','#','.','.','.','.','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # |
 	    9:['#','#','#','#','#','#','#','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # |
-	   10:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','#','.',"Ω",'.','.','.','.','.','#','.','.','$','.','.','♥','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.',"#"], # |
+	   10:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.',"Ω",'.','.','.','.','.','#','.','.','$','.','.','♥','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.',"#"], # |
 	   11:['#','.','C','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','.','.','.','.','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # 
 	   12:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','.','.','.','.','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # 
 	   13:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','.','.','.','.','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # 
@@ -127,6 +128,8 @@ while True:
 	if pressedkey == "i" or pressedkey =="I":
 		print("You have these items at the moment!")
 		print(*inventory, sep="\n")
+	if pressedkey == "l" or pressedkey == "L":
+		print(*balance, sep="\n")
 	if pressedkey == 'w' or pressedkey == 'W':
 		if room[pos[0]-1][pos[1]] is not stuff['wall']:
 			up(room, stuff['empty'], stuff['player'])
@@ -169,3 +172,44 @@ while True:
 			inventory.append("Blade of the Ruined King:1")   
 			print(pos)
 			time.sleep(1)
+	if room[pos[0]][pos[1]+1] is stuff['money']:
+			right(room,stuff['empty'], stuff['player'])
+			print('Congrats! You got $15 ')
+			print('Go see the nearest shop and buy something')
+			balance.append('$15')    
+			print(pos)
+			time.sleep(1)
+	if room[pos[0]][pos[1]+1] is stuff['shop']:
+			right(room,stuff['empty'], stuff['player'])
+			print('Hello Adventurer! Welcome our shop! Come back every day to see our new items" ')
+			print("Today's item: 1 xCoke : 10$")
+			items =["1.Coke:1 $10","2.Torch:1 $5","3.Old sword:1 $15,"]
+			print(*items, sep='\n') 
+			append_item = input("Please type which items would you buy!")
+			balance.remove('$15')
+			inventory.append(append_item)    
+			print(pos)
+			time.sleep(1)
+	if room[pos[0]][pos[1]+1] is stuff['boss']:
+			right(room,stuff['empty'], stuff['player'])
+			print("You are about to face the boss! In order to beat him you need to answer 3 questions!")
+			print("Every bad answers results -1 point from your health")
+			answer = input("Are you ready? ")
+			if answer == "yes":
+				print("Who was the king?",
+				"1.Tibó Sláger",
+				"2.Tibi Csokis",
+				"3.Elvis Presley",
+				"4.Jimmy Zámbó")
+				answer_2 = input("Type your answer: ")
+				if answer_2 == "4":
+					print("Good job!")
+					print("You got $15 and a brand-new Armor:1")
+					armor = "Armor:1"
+					inventory.append(armor)
+					balance.append("$15")
+				else:
+					print("Seriously???? The Boss defeated you, good luck next time!")
+			else:
+				print("It is a wise decision") 
+				

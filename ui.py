@@ -46,7 +46,8 @@ attribute_player = {"Power":0,
 					"Luck":0}  
 inventory =         ['Torch:1',
 					'Letter from mom:1',
-	                'Rusty sword:1'] 
+	                'Rusty sword:1']
+balance = ["Your balance:"]  
 
 if __name__ == "__main__":
     main()
