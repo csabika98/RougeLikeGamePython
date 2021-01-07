@@ -3,9 +3,10 @@ import os
 import time
 import random
 import platform
-from ui import inventory
-from ui import attribute_player
-from ui import balance
+from engine import inventory
+from engine import attribute_player
+from engine import balance
+from ui import room
 
 try:
     from msvcrt import getch #For windows
@@ -208,6 +209,7 @@ while True:
 					armor = "Armor:1"
 					inventory.append(armor)
 					balance.append("$15")
+					print("Next Question!: ")
 				else:
 					print("Seriously???? The Boss defeated you, good luck next time!")
 			else:
