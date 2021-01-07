@@ -44,7 +44,9 @@ attribute_player = {"Power":0,
 					"Intelligence":0,
 					"Charisma":0,
 					"Luck":0}  
-
+inventory =         ['Torch:1',
+					'Letter from mom:1',
+					'Rusty sword:1'] 
 
 if __name__ == "__main__":
     main()

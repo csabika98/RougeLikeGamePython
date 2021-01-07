@@ -3,6 +3,8 @@ import os
 import time
 import random
 import platform
+from start import inventory
+from start import attribute_player
 
 try:
     from msvcrt import getch #For windows
@@ -124,43 +126,46 @@ while True:
 	pressedkey = getch()
 	if pressedkey == "i" or pressedkey =="I":
 		print("You have these items at the moment!")
-		inventory ={"Torch":1,
-					"Letter from mom":1,
-					"Rusty sword":1}
-		for k, v in dict.items(inventory):
-    			print(k,v) 
+		print(*inventory, sep="\n")
 	if pressedkey == 'w' or pressedkey == 'W':
 		if room[pos[0]-1][pos[1]] is not stuff['wall']:
 			up(room, stuff['empty'], stuff['player'])
 			updater()
 			print(pos)
 		else:
-			print("Bump! Wall : up")
+			print("You can't go trough Wall : up")
 	if pressedkey == 'w' or pressedkey == 'W':
 		if room[pos[0]-1][pos[1]] is stuff['chest']:
 			up(room, stuff['empty'], stuff['player'])
 			updater()
 			print(pos)
 		else:
-			print("Bump! Wall : up")
+			print("You can't go trough Wall : up")
 	elif pressedkey == 's' or pressedkey == 'S':
 		if room[pos[0]+1][pos[1]] is not stuff['wall']:
 			down(room,stuff['empty'],stuff['player'])
 			updater()
 			print(pos)
 		else:
-			print("Bump! wall : down")
+			print("You can't go trough Wall : down")
 	elif pressedkey == 'a' or pressedkey == 'A':
 		if room[pos[0]][pos[1]-1] is not stuff['wall']:
 			left(room,stuff['empty'], stuff['player'])
 			updater()
 			print(pos)
 		else:
-			print("Bump! wall : left")
+			print("You can't go trough Wall : left")
 	elif pressedkey == 'd' or pressedkey == 'D':
 		if room[pos[0]][pos[1]+1] is not stuff['wall']:
 			right(room,stuff['empty'], stuff['player'])
 			updater()
 			print(pos)
 		else:
-			print("Bump! wall : right")
+			print("You can't go trough Wall: right")
+	if room[pos[0]][pos[1]+1] is stuff['chest']:
+			right(room,stuff['empty'], stuff['player'])
+			print('Congrats! You got a chest')
+			print('You got the Blade of the Ruined King')
+			inventory.append("Blade of the Ruined King:1")   
+			print(pos)
+			time.sleep(1)
