@@ -34,7 +34,7 @@ def main():
     print("Tips: Enter I on your keyboard if you want to see your inventory!")
     print("Have fun!")
     time.sleep(5)
-    import game
+    import main
 
 	
 health_bar = 'Your health: 3/3'

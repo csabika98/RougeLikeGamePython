@@ -65,6 +65,7 @@ def start_and_gamemap(char_name, char_select):
 	print("Your name:" + char_name)
 	print("Your class: " + char_select)
 	print("Health: 3/3")
+	print("@=player, #=wall, $=money, C=chest , Ω=shop, ₿=boss, ♥=health ")
 	for i in range(1,len(room)+1):
 	    print("".join(room[i]))
 		
@@ -209,7 +210,14 @@ while True:
 					armor = "Armor:1"
 					inventory.append(armor)
 					balance.append("$15")
-					print("Next Question!: ")
+					print("Next Question!:I follow you all the time and copy your every move, but you can’t touch me or catch me. What am I? ")
+					answer_3 = input("Type your answer!")
+					if answer_3 == "Your Shadow":
+						print("Congrats! You killed the boss, and won the game!")
+						print("Here is your reward:")
+						print("You got: God Butcher:1")
+						inventory.append("God Butcher:1")
+						print("GAME OVER!")
 				else:
 					print("Seriously???? The Boss defeated you, good luck next time!")
 			else:
