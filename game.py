@@ -263,3 +263,13 @@ while True:
 	if map1[pos[0]][pos[1]+1] is stuff['exit']:
 			right(map1,stuff['empty'], stuff['player'])
 			import map2
+	if map1[pos[0]][pos[1]+1] is stuff['monster']:
+			right(map1,stuff['empty'], stuff['player'])
+			print("You are about to defeat this monster!")
+			print("His attributes are those:")
+			monster_attributes = {"Attack Damage":55,
+								  "Defend":11}
+			for k, v in dict.items(monster_attributes):
+				print(k, v)
+			
+			
