@@ -9,7 +9,8 @@ from engine import inventory
 from engine import attribute_player
 from engine import balance
 from engine import quests
-
+from ui import map1
+from ui import print_map1
 
 try:
     from msvcrt import getch #For windows
@@ -27,23 +28,6 @@ except ImportError: #For linux and maybe mac...
 def pressedkey():
     return getch()
 
-          # 0   1   2   3   4   5   6   7   8   9  10   11  12  13  14  15
-room = {1:['#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#'], # ^
-	    2:['#','.','₿','←','←','←','←','←','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','X','.','.','#'], # |
-	    3:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # |
-	    4:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # |
-	    5:['#','.','N','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#'], # |
-	    6:['#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','.','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # x
-	    7:['#','@','.','.','.','.','.','.','N','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # |
-	    8:['#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','.','.','.','.','#','.','M','.','.','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # |
-	    9:['#','#','#','#','#','#','#','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], # |
-	   10:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','.','.','.','.','.','.',"Ω",'.','.','.','.','.','#','.','.','$','.','.','♥','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.',"#"], # |
-	   11:['#','.','C','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','.','.','.','M','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], #
-	   12:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','#','M','.','.','.','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], #
-	   13:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','#'], #
-	   14:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','.','.','.','.','.','.','#'],
-	   15:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#'], # 
-	   16:['#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#']}   # 
 
 stuff  = {'wall'  :  "#",
           'player':  "@",
@@ -60,21 +44,9 @@ stuff  = {'wall'  :  "#",
 #weapon = ['sword','nuclear bomb','TNT']
 
 	
-selected_name = input("Type your character name: ")
-char_selected = input("Type your character class: 1.Warrior, 2.Ninja, 3.Shaman: ")
-print("Warrior has less health than Ninja or Shaman but he has more DMG")
-print("Ninja can add extra +1 attribute ")
+
 pos = [] # 0 is X,1 is Y
 
-
-def start_and_gamemap(char_name, char_select):
-	print("Your name:" + char_name)
-	print("Your class: " + char_select)
-	print("Health: 3/3")
-	print("@=player, #=wall, $=money, C=chest , Ω=shop, ₿=boss, ♥=health, M=monster, N=NPC, X= proceed to the next map")
-	print("Keys: R = show player attributes, I= Inventory, L = money, Q = quests ")
-	for i in range(1,len(room)+1):
-	    print("".join(room[i]))
 
 
 
@@ -111,10 +83,10 @@ def get_attributes():
 
 
 def player_pos():
-	for i in range(1,len(room)+1):
-		if stuff['player'] in room[i]:
+	for i in range(1,len(map1)+1):
+		if stuff['player'] in map1[i]:
 			x_axis = i
-			y_axis = room[i].index(stuff['player'])
+			y_axis = map1[i].index(stuff['player'])
 			global pos
 			del pos[:]
 			pos.append(x_axis)
@@ -128,8 +100,7 @@ def updater():
 	elif platform.system() == 'Linux':
 		os.system('clear')
 
-
-	start_and_gamemap(selected_name,char_selected)
+	print_map1()
 	player_pos()
 
 
@@ -178,60 +149,60 @@ while True:
 	if pressedkey == "l" or pressedkey == "L":
 		print(*balance, sep="\n")
 	if pressedkey == 'w' or pressedkey == 'W':
-		if room[pos[0]-1][pos[1]] is not stuff['wall']:
-			up(room, stuff['empty'], stuff['player'])
+		if map1[pos[0]-1][pos[1]] is not stuff['wall']:
+			up(map1, stuff['empty'], stuff['player'])
 			updater()
 			print(pos)
 		else:
 			print("You can't go trough Wall : up")
 	if pressedkey == 'w' or pressedkey == 'W':
-		if room[pos[0]-1][pos[1]] is stuff['chest']:
-			up(room, stuff['empty'], stuff['player'])
+		if map1[pos[0]-1][pos[1]] is stuff['chest']:
+			up(map1, stuff['empty'], stuff['player'])
 			updater()
 			print(pos)
 		else:
 			print("You can't go trough Wall : up")
 	elif pressedkey == 's' or pressedkey == 'S':
-		if room[pos[0]+1][pos[1]] is not stuff['wall']:
-			down(room,stuff['empty'],stuff['player'])
+		if map1[pos[0]+1][pos[1]] is not stuff['wall']:
+			down(map1,stuff['empty'],stuff['player'])
 			updater()
 			print(pos)
 		else:
 			print("You can't go trough Wall : down")
 	elif pressedkey == 'a' or pressedkey == 'A':
-		if room[pos[0]][pos[1]-1] is not stuff['wall']:
-			left(room,stuff['empty'], stuff['player'])
+		if map1[pos[0]][pos[1]-1] is not stuff['wall']:
+			left(map1,stuff['empty'], stuff['player'])
 			updater()
 			print(pos)
 		else:
 			print("You can't go trough Wall : left")
 	elif pressedkey == 'd' or pressedkey == 'D':
-		if room[pos[0]][pos[1]+1] is not stuff['wall']:
-			right(room,stuff['empty'], stuff['player'])
+		if map1[pos[0]][pos[1]+1] is not stuff['wall']:
+			right(map1,stuff['empty'], stuff['player'])
 			updater()
 			print(pos)
 		else:
 			print("You can't go trough Wall: right")
-	if room[pos[0]][pos[1]+1] is stuff['chest']:
-			right(room,stuff['empty'], stuff['player'])
+	if map1[pos[0]][pos[1]+1] is stuff['chest']:
+			right(map1,stuff['empty'], stuff['player'])
 			print('Congrats! You got a chest')
 			print('You got the Blade of the Ruined King')
 			inventory.append("Blade of the Ruined King:1")   
 			print(pos)
 			time.sleep(1)
-	if room[pos[0]][pos[1]+1] is stuff['money']:
-			right(room,stuff['empty'], stuff['player'])
+	if map1[pos[0]][pos[1]+1] is stuff['money']:
+			right(map1,stuff['empty'], stuff['player'])
 			print('Congrats! You got $15 ')
 			print('Go see the nearest shop and buy something')
 			balance.append('$15')    
 			print(pos)
 			time.sleep(1)
-	if room[pos[0]][pos[1]+1] is stuff['shop']:
-			right(room,stuff['empty'], stuff['player'])
+	if map1[pos[0]][pos[1]+1] is stuff['shop']:
+			right(map1,stuff['empty'], stuff['player'])
 			print('Hello Adventurer! Welcome our shop! Come back every day to see our new items" ')
 			print("Today's item: 1 xCoke : 10$")
 			items =["1.Coke:1 $10","2.Torch:1 $5","3.Old sword:1 $15,"]
-			print(*items, sep='\n') 
+			print(*items, sep='\n')
 			append_item = input("Please type which items would you buy!")
 			if balance == ["Your balance:"]:
 				print("You don't have enough money to buy this!")
@@ -245,8 +216,8 @@ while True:
 		print("For starters you can add only +4 (if you choose ninja class you have extra +1 attribute)")
 		for k, v in dict.items(attribute_player):
 			print(k, v)
-	if room[pos[0]][pos[1]+1] is stuff['boss']:
-			right(room,stuff['empty'], stuff['player'])
+	if map1[pos[0]][pos[1]+1] is stuff['boss']:
+			right(map1,stuff['empty'], stuff['player'])
 			print("You are about to face the boss! In order to beat him you need to answer 3 questions!")
 			print("Every bad answers results -1 point from your health")
 			answer = input("Are you ready? ")
@@ -275,8 +246,8 @@ while True:
 					print("Seriously???? The Boss defeated you, good luck next time!")
 			else:
 				print("It is a wise decision") 
-	if room[pos[0]][pos[1]+1] is stuff['npc']:
-			right(room,stuff['empty'], stuff['player'])
+	if map1[pos[0]][pos[1]+1] is stuff['npc']:
+			right(map1,stuff['empty'], stuff['player'])
 			print('Johhny: Hello, Adventurer, i need your help ')
 			print("If you help me i will reward you! What do you say?")
 			answer = input("Will you help Johhny? type yes or no: ")
@@ -289,6 +260,6 @@ while True:
 				quests.append("2: Find Johhny's wallet,")
 			else:
 				print("It's shame , really!")
-	if room[pos[0]][pos[1]+1] is stuff['exit']:
-			right(room,stuff['empty'], stuff['player'])
+	if map1[pos[0]][pos[1]+1] is stuff['exit']:
+			right(map1,stuff['empty'], stuff['player'])
 			import map2

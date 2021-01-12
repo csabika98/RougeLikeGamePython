@@ -22,6 +22,10 @@ def story():
 
 
 
+selected_name = input("Type your character name: ")
+char_selected = input("Type your character class: 1.Warrior, 2.Ninja, 3.Shaman: ")
+print("Warrior has less health than Ninja or Shaman but he has more DMG")
+print("Ninja can add extra +1 attribute ")
 
 def attributes():
     print("Hello player! Welcome to our World")
@@ -43,8 +47,3 @@ inventory =         ['Torch:1',
 balance = ["Your balance:"]
 quests =["1: Defeat 2 monsters", "2: Speak with Johhny[NPC],"]  
 
-if __name__ == "__main__":
-    print_ascii_art()
-    story()
-    attributes()
-    
