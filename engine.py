@@ -35,7 +35,8 @@ attribute_player = {"Power":0,
 inventory =         ['Torch:1',
 					'Letter from mom:1',
 	                'Rusty sword:1']
-balance = ["Your balance:"]  
+balance = ["Your balance:"]
+quests =["1: Defeat 2 monsters", "2. Speak with Johhny[NPC],"]  
 
 if __name__ == "__main__":
     print_ascii_art()
