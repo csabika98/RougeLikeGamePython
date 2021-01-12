@@ -181,20 +181,6 @@ while True:
         balance.append('$15')
         print(pos)
         time.sleep(1)
-    if room[pos[0]][pos[1] + 1] is stuff['shop']:
-        right(room, stuff['empty'], stuff['player'])
-        print('Hello Adventurer! Welcome our shop! Come back every day to see our new items" ')
-        print("Today's item: 1 xCoke : 10$")
-        items = ["1.Coke:1 $10", "2.Torch:1 $5", "3.Old sword:1 $15,"]
-        print(*items, sep='\n')
-        append_item = input("Please type which items would you buy!")
-        if balance == ["Your balance:"]:
-            print("You don't have enough money to buy this!")
-        else:
-            balance.remove('$15')
-            inventory.append(append_item)
-        print(pos)
-        time.sleep(1)
     if pressedkey == "r" or pressedkey == "R":
         print("Here's your character attributes!")
         print("For starters you can add only +4 (if you choose ninja class you have extra +1 attribute)")
@@ -231,17 +217,3 @@ while True:
                 print("Seriously???? The Boss defeated you, good luck next time!")
         else:
             print("It is a wise decision")
-    if room[pos[0]][pos[1] + 1] is stuff['npc']:
-        right(room, stuff['empty'], stuff['player'])
-        print('Johhny: Hello, Adventurer, i need your help ')
-        print("If you help me i will reward you! What do you say?")
-        answer = input("Will you help Johhny? type yes or no: ")
-        if answer == "yes":
-            print("Thank you so much!")
-            print("I lost my wallet, i'm bet one of the monsters stole from me ")
-            print("Please kill those monsters and bring back my wallet!")
-            print("Tips: this quest has been added to your quest list to see press Q!")
-            del quests[1]
-            quests.append("2: Find Johhny's wallet,")
-        else:
-            print("It's shame , really!")
