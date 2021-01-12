@@ -21,7 +21,7 @@ def attributes():
     print("Hello player! Welcome to our World")
     print("Choose attribute to your character:")
     print("Note: YOU ONLY HAVE 4 ATTRIBUTE TO SPEND!, FOR STARTERS ONLY 2 POINT/ATTRIBUTE OR 1 POINT EACH ATTRIBUTE ")
-    import main
+    import game
     time.sleep(2)
 
 	
