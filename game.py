@@ -47,7 +47,8 @@ stuff  = {'wall'  :  "#",
 
 pos = [] # 0 is X,1 is Y
 
-
+character_att ={"Attack Damage":45,
+				"Defense":20}  
 
 
 def get_attributes():
