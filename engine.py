@@ -10,7 +10,13 @@ def print_ascii_art():
     print(ascii_text)
 
 
+
+
 def story():
+    print("You are Shinek the half-ghoul")
+    print("Half-ghoul means half-human, half-undead")
+    print("You have to kill Baltaazar , the giga-boss who did this to you")
+    print("Your journey begins here!")
     print("")
 
 
@@ -19,8 +25,7 @@ def story():
 
 def attributes():
     print("Hello player! Welcome to our World")
-    print("Choose attribute to your character:")
-    print("Note: YOU ONLY HAVE 4 ATTRIBUTE TO SPEND!, FOR STARTERS ONLY 2 POINT/ATTRIBUTE OR 1 POINT EACH ATTRIBUTE ")
+    print("Tips: YOU ONLY HAVE 4 ATTRIBUTE TO SPEND!, FOR STARTERS ONLY 2 POINT/ATTRIBUTE OR 1 POINT EACH ATTRIBUTE ")
     import game
     time.sleep(2)
 
@@ -36,7 +41,7 @@ inventory =         ['Torch:1',
 					'Letter from mom:1',
 	                'Rusty sword:1']
 balance = ["Your balance:"]
-quests =["1: Defeat 2 monsters", "2. Speak with Johhny[NPC],"]  
+quests =["1: Defeat 2 monsters", "2: Speak with Johhny[NPC],"]  
 
 if __name__ == "__main__":
     print_ascii_art()
