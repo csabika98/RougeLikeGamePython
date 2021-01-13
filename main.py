@@ -9,4 +9,3 @@ if __name__ == "__main__":
     print_ascii_art()
     story()
     attributes()
-    import game
