@@ -277,9 +277,14 @@ while True:
 				print("You lost! Better luck next time")
 			else:
 				print("Congratulations! You beat this monster")
-				print("You got 15$")
 				print("You got a key! hmm, maybe that could be useful later")
+				print("You found Johhny's wallet!")
+				print("Here's your reward : 40$, Scythe:1")
+				print("Quest has been completed! ")
+				del quests[1]
+				inventory.append("Scythe:1")
 				balance.append("45$")
+				balance.append("100$")
 				inventory.append("Key:1")
 			
 			
