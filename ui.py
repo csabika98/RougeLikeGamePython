@@ -47,9 +47,11 @@ def print_map1():
 
 
 def print_map2():
-    print("You are on the second map!")
-    print("Your name: " + selected_name)
-    print("Your class: " + char_selected)
-    for i in range(1, len(map2) + 1):
-        print("".join(map2[i]))
+	print("@=player, #=wall, C=chest, ₿=boss, M=monster")
+	print("R= show player attributes, I= Inventory , L= money, Q= quests")
+	print("You are on the second map!")
+	print("Your name: " + selected_name)
+	print("Your class: " + char_selected)
+	for i in range(1, len(map2) + 1):
+		print("".join(map2[i]))
 
