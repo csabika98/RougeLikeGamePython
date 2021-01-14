@@ -5,6 +5,7 @@ import sys
 import tty
 import termios
 import platform
+import random
 from engine import inventory
 from engine import attribute_player
 from engine import balance
@@ -70,7 +71,17 @@ def updater():
 
 
 updater()
-
+# i made a question bank here to make randomize!
+questions = []
+questions.append(("When was the 1848 revolution?", "1848"))
+questions.append(('When was the "Aranybulla" created? ', "1222"))
+questions.append(("What Was the Largest Contiguous Empire in History?", "Khan"))
+questions.append(("Who Discovered America?", "Colombus"))
+questions.append(("What Does the D in D-Day Stand For?", "Doom"))
+questions.append(("Who Invented the Automobile?", "Henry Ford"))
+questions.append(("When Was the Declaration of Independence Signed?", "1776"))
+questions.append(("What is the oldest city of the United States?", "Jamestown"))
+questions.append(("Which African Country's Capital was Named After a U.S. President?", "Monrovia"))
 
 def up(ditcioary, inst_replace, inst_player):
     (ditcioary[pos[0]]).pop(pos[1])
@@ -197,3 +208,18 @@ while True:
                 print("Seriously???? The Boss defeated you, good luck next time!")
         else:
             print("It is a wise decision")
+    if map2[pos[0]][pos[1] + 1] is stuff['monster']:
+        right(map2, stuff['empty'], stuff['player'])
+        print("You are about to face this monster!")
+        print("To defeat this monster you need to answer 1 question!")
+        random_question = random.choice(questions)
+        question, answer = random_question
+        user_answer = input(question)
+        if user_answer != answer:
+            print("You lost! Better luck next time")
+        else:
+            print("Congratulations! You beat this monster")
+            print("You got 15$")
+            print("You got a key!")
+            balance.append("45$")
+            inventory.append("Key:1")
