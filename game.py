@@ -5,12 +5,14 @@ import sys
 import tty
 import termios
 import platform
+import random
 from engine import inventory
 from engine import attribute_player
 from engine import balance
 from engine import quests
 from ui import map1
 from ui import print_map1
+from engine import questions
 
 try:
     from msvcrt import getch #For windows
@@ -266,11 +268,18 @@ while True:
 			import map2
 	if map1[pos[0]][pos[1]+1] is stuff['monster']:
 			right(map1,stuff['empty'], stuff['player'])
-			print("You are about to defeat this monster!")
-			print("His attributes are those:")
-			monster_attributes = {"Attack Damage":55,
-								  "Defend":11}
-			for k, v in dict.items(monster_attributes):
-				print(k, v)
+			print("You are about to face this monster!")
+			print("To defeat this monster you need to answer 1 question!")
+			random_question = random.choice(questions)
+			question, answer = random_question
+			user_answer = input(question)
+			if user_answer != answer:
+				print("You lost! Better luck next time")
+			else:
+				print("Congratulations! You beat this monster")
+				print("You got 15$")
+				print("You got a key! hmm, maybe that could be useful later")
+				balance.append("45$")
+				inventory.append("Key:1")
 			
 			

@@ -10,6 +10,18 @@ def print_ascii_art():
     print(ascii_text)
 
 
+# i made a question bank here to make randomize!
+questions = []
+questions.append(("When was the 1848 revolution?: ", "1848"))
+questions.append(('When was the "Aranybulla" created?:  ', "1222"))
+questions.append(("What Was the Largest Contiguous Empire in History?: " , "Khan"))
+questions.append(("Who Discovered America?: ", "Colombus"))
+questions.append(("What Does the D in D-Day Stand For?: ", "Doom"))
+questions.append(("Who Invented the Automobile?: ", "Henry Ford"))
+questions.append(("When Was the Declaration of Independence Signed?: ", "1776"))
+questions.append(("What is the oldest city of the United States?: ", "Jamestown"))
+questions.append(("Which African Country's Capital was Named After a U.S. President?: ", "Monrovia"))
+
 
 
 def story():

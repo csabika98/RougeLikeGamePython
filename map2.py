@@ -12,6 +12,7 @@ from engine import balance
 from engine import quests
 from ui import map2
 from ui import print_map2
+from engine import questions
 
 try:
     from msvcrt import getch  # For windows
@@ -71,17 +72,7 @@ def updater():
 
 
 updater()
-# i made a question bank here to make randomize!
-questions = []
-questions.append(("When was the 1848 revolution?", "1848"))
-questions.append(('When was the "Aranybulla" created? ', "1222"))
-questions.append(("What Was the Largest Contiguous Empire in History?", "Khan"))
-questions.append(("Who Discovered America?", "Colombus"))
-questions.append(("What Does the D in D-Day Stand For?", "Doom"))
-questions.append(("Who Invented the Automobile?", "Henry Ford"))
-questions.append(("When Was the Declaration of Independence Signed?", "1776"))
-questions.append(("What is the oldest city of the United States?", "Jamestown"))
-questions.append(("Which African Country's Capital was Named After a U.S. President?", "Monrovia"))
+
 
 def up(ditcioary, inst_replace, inst_player):
     (ditcioary[pos[0]]).pop(pos[1])
@@ -220,6 +211,6 @@ while True:
         else:
             print("Congratulations! You beat this monster")
             print("You got 15$")
-            print("You got a key!")
+            print("You got a key! hmm, maybe that could be useful later")
             balance.append("45$")
             inventory.append("Key:1")
